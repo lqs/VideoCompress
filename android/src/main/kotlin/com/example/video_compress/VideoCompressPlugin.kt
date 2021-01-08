@@ -107,9 +107,9 @@ class VideoCompressPlugin : MethodCallHandler, FlutterPlugin {
                     3 -> {
 
                         assert(value = frameRate != null)
-                        videoTrackStrategy = DefaultVideoStrategy.Builder()
-                                .keyFrameInterval(3f)
-                                .bitRate(1280 * 720 * 4.toLong())
+                        videoTrackStrategy = DefaultVideoStrategy.atMost(720)
+                                .keyFrameInterval(2f)
+                                .bitRate(800 * 1024.toLong())
                                 .frameRate(frameRate!!) // will be capped to the input frameRate
                                 .build()
                     }
